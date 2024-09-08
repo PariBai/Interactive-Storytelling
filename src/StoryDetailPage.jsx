@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import stories from './storiesData'; // Adjust the import path as necessary
+import stories from './StoriesData'; // Adjust the import path as necessary
 import './style.css';
 
 const StoryDetailPage = () => {

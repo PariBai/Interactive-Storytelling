@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom'; // If you're using React Router
+import { useNavigate } from 'react-router-dom'; // Use useNavigate from react-router-dom
 import './style.css';
 
 const AdminAnalyticsPage = () => {
@@ -14,7 +14,7 @@ const AdminAnalyticsPage = () => {
 
     const adminUserId = 'admin123'; // Replace this with actual admin ID logic
     const currentUserId = localStorage.getItem('userId'); // Assuming userId is stored in localStorage after login
-    const history = useHistory();
+    const navigate = useNavigate(); // Replace useHistory with useNavigate
 
     useEffect(() => {
         // Check if current user is the admin
@@ -23,9 +23,9 @@ const AdminAnalyticsPage = () => {
             fetchAnalyticsData();
         } else {
             setIsAuthorized(false);
-            history.push('/login'); // Redirect to login or unauthorized page if not admin
+            navigate('/login'); // Use navigate instead of history.push
         }
-    }, [currentUserId]);
+    }, [currentUserId, navigate]); // Add navigate to dependencies
 
     const fetchAnalyticsData = () => {
         const categories = ['category-adventure', 'category-romance', 'category-emotional', 'category-mystery'];
